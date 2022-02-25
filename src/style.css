@@ -1,0 +1,11 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+.biocard {
+  width: 500px;
+}
+.contactcard {
+  width: 400px;
+}
