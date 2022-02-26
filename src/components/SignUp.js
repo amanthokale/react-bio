@@ -260,7 +260,7 @@ export default function app() {
                               className="select form-control-lg"
                               onChange={handleInputs}
                             >
-                              <option value="1" disabled>
+                              <option value="" >
                                 Choose option
                               </option>
                               <option value="Javascript">Javascript</option>
