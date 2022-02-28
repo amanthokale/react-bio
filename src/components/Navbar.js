@@ -1,14 +1,42 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  var Navigate = useNavigate();
+  const [user,setUser]=useState({
+  });
+
+const auth=async()=>{
+try {
+  const response = await fetch ('/logout',{
+    mathod:'GET',
+    headers:{
+      "Content-Type":"application/json",
+    }
+  });
+  console.log(response)
+  if(response.status===200){
+    Navigate('/login')
+    window.alert("Logout Successfull")
+  }
+  else{
+    throw new Error("HUI")
+  }
+} catch (e) {
+  console.log(e)
+  window.alert("Need to login first")
+}
+}
+
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="#">
             Bio-Web
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -42,18 +70,14 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </li>
+
             </ul>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
+
+
+              <button className="btn btn-danger ms-2" onClick={auth} type="submit">
+                Logout
               </button>
-            </form>
+
           </div>
         </div>
       </nav>

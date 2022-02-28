@@ -9,9 +9,13 @@ import Bio from './components/Bio';
 import Contact from './components/Contact';
 import Error404 from './components/Error404';
 
+
+
+
 export default function App() {
   return (
     <>
+
       <Router>
         <Navbar />
         <Routes>
@@ -23,6 +27,7 @@ export default function App() {
           <Route exact path="*" element={<Error404 />} />
         </Routes>
       </Router>
+    
     </>
   );
 }

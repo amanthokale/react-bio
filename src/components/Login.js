@@ -2,7 +2,9 @@ import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 
+
 export default function Login() {
+
   var Navigate = useNavigate();
   const [user,setUser]=useState({
     email:'',

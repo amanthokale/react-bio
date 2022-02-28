@@ -12,7 +12,7 @@ const callAbout=async()=>{
       mathod:'GET',
       headers:{
         Accept:"application/json",
-        "Content-Type":"applicayion/json",
+        "Content-Type":"application/json",
         credentals:"include"
       }
     });
