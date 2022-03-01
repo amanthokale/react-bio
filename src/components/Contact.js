@@ -74,6 +74,7 @@ try {
 
   return (
     <>
+    <div className="container">
       <h1 className="text-center mt-5 mb-5">Contact Us</h1>
       <div className="container d-flex justify-content-center align-items-center contactcard">
         <form method="post">
@@ -98,6 +99,7 @@ try {
           </div>
 
 
+
           <div className="form-outline mb-4">
             <textarea
               className="form-control"
@@ -113,12 +115,13 @@ try {
           </div>
 
 
-
           <button type="submit" onClick={postData} className="btn btn-primary btn-block mb-4">
             Send
           </button>
         </form>
       </div>
+      </div>
+
     </>
   );
 }

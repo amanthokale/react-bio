@@ -1,8 +1,13 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,useContext} from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import UserContext from '../context/User/UserContext';
+
 
 const Navbar = () => {
+  const a = useContext(UserContext);
+  const {state,setState}=a;
+
   var Navigate = useNavigate();
   const [user,setUser]=useState({
   });
@@ -17,8 +22,10 @@ try {
   });
   console.log(response)
   if(response.status===200){
+    setState(false)
     Navigate('/login')
     window.alert("Logout Successfull")
+
   }
   else{
     throw new Error("HUI")
@@ -32,10 +39,10 @@ try {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="#">
-            Bio-Web
+            YourInfo
           </Link>
           <button
             className="navbar-toggler"
@@ -50,19 +57,19 @@ try {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+              {state===false?<li className="nav-item">
                 <Link
-                  className="nav-link active"
+                  className="nav-link"
                   aria-current="page"
                   to="/Login"
                 >
                   Login
                 </Link>
-              </li>
+              </li>:""}
 
               <li className="nav-item">
                 <Link className="nav-link" to="/Bio">
-                  Bio Data
+                  Profile
                 </Link>
               </li>
               <li className="nav-item">
@@ -74,9 +81,9 @@ try {
             </ul>
 
 
-              <button className="btn btn-danger ms-2" onClick={auth} type="submit">
+              {state===true?<button className="btn btn-danger ms-2" onClick={auth} type="submit">
                 Logout
-              </button>
+              </button>:""}
 
           </div>
         </div>

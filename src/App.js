@@ -8,14 +8,14 @@ import Home from './components/Home';
 import Bio from './components/Bio';
 import Contact from './components/Contact';
 import Error404 from './components/Error404';
-
+import UserState from './context/User/UserState';
 
 
 
 export default function App() {
   return (
     <>
-
+    <UserState>
       <Router>
         <Navbar />
         <Routes>
@@ -27,7 +27,7 @@ export default function App() {
           <Route exact path="*" element={<Error404 />} />
         </Routes>
       </Router>
-    
+      </UserState>
     </>
   );
 }

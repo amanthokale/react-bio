@@ -1,10 +1,14 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import UserContext from '../context/User/UserContext';
 
 
 export default function Login() {
 
+  const a = useContext(UserContext);
+  const {state,setState}=a;
+  setState(false)
   var Navigate = useNavigate();
   const [user,setUser]=useState({
     email:'',
@@ -34,10 +38,13 @@ let name,value;
     });
     // const data = await response.json()
     if(response.status===200){
+        setState(true)
       window.alert("Login Successfull")
+
     Navigate('/Bio');
   }else if(response.status===400){
     window.alert("Invalid Credentials")
+
   }
 
   };

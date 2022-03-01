@@ -1,7 +1,14 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,useContext} from 'react';
 import { useNavigate } from 'react-router';
+import img from '../aman1.webp'
+import UserContext from '../context/User/UserContext';
+
 
 export default function app() {
+  const a = useContext(UserContext);
+  const {state,setState}=a;
+
+
     var Navigate = useNavigate();
     const [user,setUser]=useState({
     });
@@ -39,12 +46,13 @@ useEffect(()=>{
       <div className="container d-flex justify-content-center align-items-center mt-5">
         <div className="card biocard">
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp"
+            // src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp"
+            src={img}
             className="card-img-top"
-            alt="Chicago Skyscrapers"
+            alt="User image"
           />
           <div className="card-body">
-            <h5 className="card-title">{user.firstName} {user.lastName}</h5>
+            <h5 className="card-title">{user.firstName?setState(true):setState(false)} {user.firstName} {user.lastName}</h5>
             <p className="card-text">
               {user.course} Developer
             </p>
@@ -56,10 +64,10 @@ useEffect(()=>{
           </ul>
           <div className="card-body">
             <a href="#" className="card-link">
-              Card link
+              Github
             </a>
             <a href="#" className="card-link">
-              Another link
+              linkedin
             </a>
           </div>
         </div>
